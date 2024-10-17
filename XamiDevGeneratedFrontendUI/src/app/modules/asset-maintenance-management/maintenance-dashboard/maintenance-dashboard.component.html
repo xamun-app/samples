@@ -1,0 +1,117 @@
+<div class="container-fluid maintenance-dashboard">
+  <h1 class="mt-4 mb-4">Maintenance Dashboard</h1>
+  
+  <div class="row">
+    <div class="col-md-6 col-lg-3 mb-4">
+      <mat-card class="bg-primary text-white">
+        <mat-card-content>
+          <h5 class="card-title">Scheduled Tasks</h5>
+          <h2 class="card-text">{{scheduledTasks}}</h2>
+          <mat-icon class="fa-3x">event</mat-icon>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-md-6 col-lg-3 mb-4">
+      <mat-card class="bg-success text-white">
+        <mat-card-content>
+          <h5 class="card-title">Ongoing Tasks</h5>
+          <h2 class="card-text">{{ongoingTasks}}</h2>
+          <mat-icon class="fa-3x">build</mat-icon>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-md-6 col-lg-3 mb-4">
+      <mat-card class="bg-warning text-white">
+        <mat-card-content>
+          <h5 class="card-title">Overdue Tasks</h5>
+          <h2 class="card-text">{{overdueTasks}}</h2>
+          <mat-icon class="fa-3x">warning</mat-icon>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-md-6 col-lg-3 mb-4">
+      <mat-card class="bg-info text-white">
+        <mat-card-content>
+          <h5 class="card-title">Completed Tasks</h5>
+          <h2 class="card-text">{{completedTasks}}</h2>
+          <mat-icon class="fa-3x">check_circle</mat-icon>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8 mb-4">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Maintenance Status Overview</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div id="maintenanceChart"></div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-md-4 mb-4">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Asset Type Distribution</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div id="assetTypeChart"></div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Recent Maintenance Activities</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <table mat-table [dataSource]="recentActivities" class="mat-elevation-z8">
+            <ng-container matColumnDef="asset">
+              <th mat-header-cell *matHeaderCellDef> Asset </th>
+              <td mat-cell *matCellDef="let element"> {{element.asset}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="type">
+              <th mat-header-cell *matHeaderCellDef> Type </th>
+              <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef> Status </th>
+              <td mat-cell *matCellDef="let element">
+                <span [ngClass]="{'badge': true, 'badge-warning': element.status === 'Ongoing', 'badge-success': element.status === 'Scheduled', 'badge-danger': element.status === 'Overdue'}">
+                  {{element.status}}
+                </span>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="priority">
+              <th mat-header-cell *matHeaderCellDef> Priority </th>
+              <td mat-cell *matCellDef="let element"> {{element.priority}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="dueDate">
+              <th mat-header-cell *matHeaderCellDef> Due Date </th>
+              <td mat-cell *matCellDef="let element"> {{element.dueDate}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef> Action </th>
+              <td mat-cell *matCellDef="let element">
+                <button mat-raised-button color="primary" (click)="viewDetails(element)">View Details</button>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="['asset', 'type', 'status', 'priority', 'dueDate', 'action']"></tr>
+            <tr mat-row *matRowDef="let row; columns: ['asset', 'type', 'status', 'priority', 'dueDate', 'action'];"></tr>
+          </table>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

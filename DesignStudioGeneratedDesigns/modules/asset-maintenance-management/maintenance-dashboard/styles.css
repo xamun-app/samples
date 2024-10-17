@@ -1,0 +1,24 @@
+.maintenance-dashboard .card {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.maintenance-dashboard .card-body {
+    position: relative;
+}
+
+.maintenance-dashboard .card-body i {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    opacity: 0.3;
+}
+
+.maintenance-dashboard .table th,
+.maintenance-dashboard .table td {
+    vertical-align: middle;
+}
+
+#maintenanceChart, #assetTypeChart {
+    height: 300px;
+}

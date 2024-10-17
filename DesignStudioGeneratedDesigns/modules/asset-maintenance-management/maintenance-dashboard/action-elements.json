@@ -1,0 +1,9 @@
+{
+    "elements": [
+        {
+            "text": "View Details",
+            "class": "btn-view-details",
+            "action": "View details of the maintenance activity."
+        }
+    ]
+}

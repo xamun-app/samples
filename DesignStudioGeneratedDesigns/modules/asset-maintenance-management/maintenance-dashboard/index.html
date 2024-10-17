@@ -1,0 +1,117 @@
+<div class="container-fluid maintenance-dashboard">
+    <h1 class="mt-4 mb-4">Maintenance Dashboard</h1>
+    
+    <div class="row">
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card bg-primary text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Scheduled Tasks</h5>
+                    <h2 class="card-text">24</h2>
+                    <i class="fas fa-calendar-alt fa-3x"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card bg-success text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Ongoing Tasks</h5>
+                    <h2 class="card-text">8</h2>
+                    <i class="fas fa-wrench fa-3x"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card bg-warning text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Overdue Tasks</h5>
+                    <h2 class="card-text">3</h2>
+                    <i class="fas fa-exclamation-triangle fa-3x"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3 mb-4">
+            <div class="card bg-info text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Completed Tasks</h5>
+                    <h2 class="card-text">56</h2>
+                    <i class="fas fa-check-circle fa-3x"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Maintenance Status Overview</h5>
+                </div>
+                <div class="card-body">
+                    <div id="maintenanceChart"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Asset Type Distribution</h5>
+                </div>
+                <div class="card-body">
+                    <div id="assetTypeChart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Recent Maintenance Activities</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Asset</th>
+                                    <th>Type</th>
+                                    <th>Status</th>
+                                    <th>Priority</th>
+                                    <th>Due Date</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Forklift #3</td>
+                                    <td>Vehicle</td>
+                                    <td><span class="badge badge-warning">Ongoing</span></td>
+                                    <td>High</td>
+                                    <td>2023-06-15</td>
+                                    <td><button class="btn btn-sm btn-primary btn-view-details">View Details</button></td>
+                                </tr>
+                                <tr>
+                                    <td>CNC Machine #2</td>
+                                    <td>Equipment</td>
+                                    <td><span class="badge badge-success">Scheduled</span></td>
+                                    <td>Medium</td>
+                                    <td>2023-06-20</td>
+                                    <td><button class="btn btn-sm btn-primary btn-view-details">View Details</button></td>
+                                </tr>
+                                <tr>
+                                    <td>HVAC System</td>
+                                    <td>Facility</td>
+                                    <td><span class="badge badge-danger">Overdue</span></td>
+                                    <td>Critical</td>
+                                    <td>2023-06-10</td>
+                                    <td><button class="btn btn-sm btn-primary btn-view-details">View Details</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

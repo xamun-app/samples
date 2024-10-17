@@ -1,0 +1,124 @@
+<div class="container mt-4">
+  <h1 class="mb-4">Asset Details</h1>
+  
+  <ng-container *ngIf="loading; else content">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </ng-container>
+
+  <ng-template #content>
+    <div *ngIf="error" class="alert alert-danger">
+      {{ error }}
+    </div>
+
+    <div *ngIf="assetDetails && !error" class="row">
+      <div class="col-md-4 mb-4">
+        <mat-card>
+          <img mat-card-image src="https://dummyimage.com/400x300/eeeeee/999999&text=Asset+Image" alt="Asset Image">
+          <mat-card-content>
+            <h5>Asset ID: {{ assetDetails.assetId }}</h5>
+            <p>{{ assetDetails.assetName }}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      
+      <div class="col-md-8">
+        <mat-tab-group>
+          <mat-tab label="General Info">
+            <h4>General Information</h4>
+            <table class="table">
+              <tr>
+                <th>Asset Name:</th>
+                <td>{{ assetDetails.assetName }}</td>
+              </tr>
+              <tr>
+                <th>Category:</th>
+                <td>{{ assetDetails.category }}</td>
+              </tr>
+              <tr>
+                <th>Purchase Date:</th>
+                <td>{{ assetDetails.purchaseDate | date }}</td>
+              </tr>
+              <tr>
+                <th>Purchase Price:</th>
+                <td>{{ assetDetails.purchasePrice | currency }}</td>
+              </tr>
+              <tr>
+                <th>Current Location:</th>
+                <td>{{ assetDetails.currentLocation }}</td>
+              </tr>
+              <tr>
+                <th>Assigned To:</th>
+                <td>{{ assetDetails.assignedTo }}</td>
+              </tr>
+            </table>
+          </mat-tab>
+          
+          <mat-tab label="Warranty">
+            <h4>Warranty Information</h4>
+            <table class="table">
+              <tr>
+                <th>Warranty Provider:</th>
+                <td>{{ assetDetails.warranty.provider }}</td>
+              </tr>
+              <tr>
+                <th>Warranty Type:</th>
+                <td>{{ assetDetails.warranty.type }}</td>
+              </tr>
+              <tr>
+                <th>Start Date:</th>
+                <td>{{ assetDetails.warranty.startDate | date }}</td>
+              </tr>
+              <tr>
+                <th>End Date:</th>
+                <td>{{ assetDetails.warranty.endDate | date }}</td>
+              </tr>
+              <tr>
+                <th>Coverage Details:</th>
+                <td>{{ assetDetails.warranty.coverageDetails }}</td>
+              </tr>
+            </table>
+          </mat-tab>
+          
+          <mat-tab label="Maintenance">
+            <h4>Maintenance Records</h4>
+            <table class="table" *ngIf="assetDetails.maintenanceRecords.length > 0; else noRecords">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Type</th>
+                  <th>Description</th>
+                  <th>Cost</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let record of assetDetails.maintenanceRecords">
+                  <td>{{ record.date | date }}</td>
+                  <td>{{ record.type }}</td>
+                  <td>{{ record.description }}</td>
+                  <td>{{ record.cost | currency }}</td>
+                </tr>
+              </tbody>
+            </table>
+            <ng-template #noRecords>
+              <p>No maintenance records available for this asset.</p>
+            </ng-template>
+          </mat-tab>
+          
+          <mat-tab label="Utilization">
+            <h4>Utilization Status</h4>
+            <div id="utilizationChart">
+              <p>Utilization chart will be displayed here. This feature is currently under development.</p>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+    
+    <div class="mt-4">
+      <button mat-raised-button color="primary" *ngFor="let element of actionElements" 
+              (click)="onActionClick(element.action)" [ngClass]="element.class" class="mr-2">
+        {{ element.text }}
+      </button>
+    </div>
+  </ng-template>
+</div>

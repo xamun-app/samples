@@ -1,0 +1,30 @@
+@import '~@angular/material/theming';
+
+.mat-card-image {
+  height: 200px;
+  object-fit: cover;
+}
+
+.table th {
+  width: 30%;
+}
+
+#utilizationChart {
+  height: 300px;
+}
+
+.mat-tab-group {
+  margin-bottom: 20px;
+}
+
+.mat-raised-button {
+  margin-right: 10px;
+}
+
+.btn-edit-asset {
+  @include mat-elevation(2);
+}
+
+.btn-print-details {
+  @include mat-elevation(2);
+}

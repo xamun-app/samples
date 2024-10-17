@@ -1,0 +1,19 @@
+<div *ngIf="isMissingAccessToken()">
+    <form class="example-form">
+        <mat-form-field class="example-full-width">
+            <mat-label>Enter Access Token</mat-label>
+            <textarea
+            matInput
+            [formControl]="accessTokenFormControl"
+            required
+            ></textarea>
+            <mat-error *ngIf="accessTokenFormControl.hasError('required')">
+                Access Token is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" class="example-button" (click)="saveAccessToken()"> Save</button>
+    </form>
+</div>
+<div *ngIf="!isMissingAccessToken()">
+    <router-outlet></router-outlet>
+</div>

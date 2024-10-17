@@ -1,0 +1,34 @@
+{
+    "elements": [
+        {
+            "text": "Edit Asset",
+            "class": "btn-edit-asset",
+            "action": "Open edit form for the current asset."
+        },
+        {
+            "text": "Print Details",
+            "class": "btn-print-details",
+            "action": "Print the asset details page."
+        },
+        {
+            "text": "General Info",
+            "class": "nav-link",
+            "action": "Switch to General Info tab."
+        },
+        {
+            "text": "Warranty",
+            "class": "nav-link",
+            "action": "Switch to Warranty tab."
+        },
+        {
+            "text": "Maintenance",
+            "class": "nav-link",
+            "action": "Switch to Maintenance tab."
+        },
+        {
+            "text": "Utilization",
+            "class": "nav-link",
+            "action": "Switch to Utilization tab."
+        }
+    ]
+}
